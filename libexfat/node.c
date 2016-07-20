@@ -322,6 +322,11 @@ static int readdir(struct exfat* ef, const struct exfat_node* parent,
 		}
 
 		entry = get_entry_ptr(ef, it);
+		exfat_debug("entry %08x %08x %08x %08x",
+				exfat_bswap32(((uint32_t*) entry)[0]),
+				exfat_bswap32(((uint32_t*) entry)[1]),
+				exfat_bswap32(((uint32_t*) entry)[2]),
+				exfat_bswap32(((uint32_t*) entry)[3]));
 		switch (entry->type)
 		{
 		case EXFAT_ENTRY_FILE:
